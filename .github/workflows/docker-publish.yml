@@ -35,7 +35,7 @@ jobs:
         run: doctl registry login --expiry-seconds 600
 
       - name: Tag Docker Image
-        run: docker tag nightowl-developers/rogue-like-dungeons registry.digitalocean.com//nightowl-developers/rogue-like-dungeons:main
+        run: docker tag nightowl-developers/rogue-like-dungeons registry.digitalocean.com/nightowl-developers/rogue-like-dungeons:main
 
       - name: Push Docker Image
         run: docker push registry.digitalocean.com/nightowl-developers/rogue-like-dungeons:main
