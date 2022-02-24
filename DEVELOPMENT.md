@@ -41,3 +41,9 @@ The commands above will build a docker image that runs a curseforge minecraft se
 that will expect the modpack zip file for Rogue Like Dungeons at 
 `/data/RAD-Serverpack-1.49.zip`. It will then set up the modpack for us and start the 
 server for us automatically if these conditions are met.
+
+## Building with Docker Compose
+
+If you want to build the container with Docker Compose instead, you can follow 
+the Docker Desktop documentation up until you build the image and container. 
+Instead just run `docker-compose up -d` and it will start.
