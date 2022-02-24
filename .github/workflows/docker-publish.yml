@@ -1,0 +1,41 @@
+name: Build Docker Image
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  schedule:
+    - cron: '15 15 * * *'
+  push:
+    branches: [ main ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: docker build -t nightowl-developers/rogue-like-dungeons .
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITAL_OCEAN_ACCESS_TOKEN }}
+
+      - name: Digital Ocean Authentication
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Tag Docker Image
+        run: docker tag nightowl-developers/rogue-like-dungeons registry.digitalocean.com//nightowl-developers/rogue-like-dungeons:main
+
+      - name: Push Docker Image
+        run: docker push registry.digitalocean.com/nightowl-developers/rogue-like-dungeons:main
