@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  minecraft-server:
+    image: itzg/minecraft-server:java8
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: "CURSEFORGE"
+      CF_SERVER_MOD: "/data/RAD-Serverpack-1.49.zip"
+      INIT_MEMORY: "4G"
+      MAX_MEMORY: "8G"
+      MEMORY: ""
+      DEBUG_MEMORY: "TRUE"
+      ALLOW_FLIGHT: true
+      ICON : https://www.google.com/url?sa=i&url=https%3A%2F%2Fshattered-pixel-dungeon.en.uptodown.com%2Fandroid&psig=AOvVaw3mw8uC-GvRCFcICN7_Qw-X&ust=1645801687771000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNDduq7PmPYCFQAAAAAdAAAAABAD
+    volumes:
+      - ./data:/data
+    tty: true
+    stdin_open: true
+    restart: always
+    container_name: mc
+    privileged: true
+
+volumes:
+  minecraft-data:
+    external: true
