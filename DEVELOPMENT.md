@@ -11,7 +11,7 @@ To build the image to docker desktop, you must create a volume with the modpack
 already contained within it. When the container starts up it will use the modpack 
 files to start the server.
 
-### Building a Volume for Rogue Like
+### Starting a Container with a Volume
 
 Before you can create a volume you have to make a folder on your host computer/desktop 
 to link it to. That folder is where you will copy your Rogue Like Dungeons Server Pack.
