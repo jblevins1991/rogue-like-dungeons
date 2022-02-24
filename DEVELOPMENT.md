@@ -13,14 +13,23 @@ files to start the server.
 
 ### Building a Volume for Rogue Like
 
+Before you can create a volume you have to make a folder on your host computer/desktop 
+to link it to. That folder is where you will copy your Rogue Like Dungeons Server Pack.
+
 ```shell
     // create a folder named data
     mkdir data
 ```
 
-Once the `data` directory exists, you will need to move the Rogue Like Dungeons modpack 
-files into it. Only then can you use an external directory binding when creating your 
-container.
+Go to the link below and download the `Minecraft 1.12 Server Packs`.
+
+**[Download like for Rogue Like Dungeons](https://www.curseforge.com/minecraft/modpacks/roguelike-adventures-and-dungeons)**
+
+After you have downloaded the Server Pack and copied the zip file into, you have to 
+create a container that mounts our `data` directory into a volume. This will gaurantee 
+that we don't lose data between server restarts.
+
+We can do this in the `docker create` stage.
 
 ```shell
     // build the image
@@ -32,8 +41,3 @@ The commands above will build a docker image that runs a curseforge minecraft se
 that will expect the modpack zip file for Rogue Like Dungeons at 
 `/data/RAD-Serverpack-1.49.zip`. It will then set up the modpack for us and start the 
 server for us automatically if these conditions are met.
-
-Go to the link below and download the `Minecraft 1.12 Server Packs`.
-
-**[Download like for Rogue Like Dungeons](https://www.curseforge.com/minecraft/modpacks/roguelike-adventures-and-dungeons)**
-
